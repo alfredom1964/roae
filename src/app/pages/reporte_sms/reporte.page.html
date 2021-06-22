@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">
+      <ion-back-button defaultHref="inside"></ion-back-button>
+    </ion-button>
+    <div *ngFor="let reporte of reportes$ | async;  let i = index ">
+      <ion-title *ngIf="i+1 == reporteId">
+        Reporte de las {{ reporte.hora[0] }}{{reporte.hora[1]}}:{{ reporte.hora[2] }}{{reporte.hora[3]}}
+      </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="ionicForm">
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+    <ion-row>
+      <ion-col size="4" class="">
+        <ion-text>
+          Latitud:
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-input type="text" name="lat" value="{{lat}}" disabled></ion-input>
+      </ion-col>
+    </ion-row>
+
+     
+    <ion-row>
+      <ion-col size="4" class="">
+        <ion-text>
+          Longitud:
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-input type="text" name="lng" value="{{lng}}" disabled></ion-input>
+      </ion-col>
+    </ion-row>
+    
+    <ion-list>
+      <ion-item-sliding *ngFor="let pregunta of preguntas$ | async;  let i = index ">
+
+        <ion-item *ngIf="i == '0'">
+          <ion-label class="ion-text-wrap">{{pregunta.texto_pregunta}}</ion-label>
+          <ion-input disabled slot="end" formControlName="{{ pregunta.id }}" disabled value="{{ username$ | async }}">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="i != '0'">
+
+          <ion-item *ngIf="pregunta?.tipo_pregunta_id == '1'">
+            <ion-label class="ion-text-wrap">Fecha/Hora:</ion-label>
+            
+            <ion-input name="hora" [(value)]="currDate"  formControlName="{{ pregunta.id }}" slot="end" disabled>
+           
+            </ion-input>
+          </ion-item>
+ 
+            
+          <ion-item *ngIf="pregunta?.tipo_pregunta_id == '2'">
+            <ion-label class="ion-text-wrap">{{pregunta.texto_pregunta}}</ion-label>
+            <ion-checkbox slot="end" formControlName="{{ pregunta.id }}"></ion-checkbox>
+          </ion-item>
+
+          <ion-item *ngIf="pregunta?.tipo_pregunta_id == '3'">
+            <ion-label class="ion-text-wrap">{{pregunta.texto_pregunta}}</ion-label>
+            <ion-input type="number" placeholder="Escriba numero" slot="end" formControlName="{{ pregunta.id }}"></ion-input>
+
+          </ion-item>
+
+
+          <ion-item *ngIf="pregunta?.tipo_pregunta_id == '4'">
+            <ion-label class="ion-text-wrap">{{pregunta.texto_pregunta}}</ion-label>
+            <ion-input type="text" placeholder="Escriba su respuesta" slot="end" formControlName="{{ pregunta.id }}">
+            </ion-input>
+          </ion-item>
+        </div>
+      </ion-item-sliding>
+    </ion-list>
+    <ion-button color="primary" class="submit-btn" expand="block" type="submit" disabled="{{ ionicForm.invalid }}">Enviar</ion-button>
+   </form>  
+  
+  </ion-content>

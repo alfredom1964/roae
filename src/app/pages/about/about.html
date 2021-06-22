@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-button slot="start">
+        <ion-back-button defaultHref="inside"></ion-back-button>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="about-header">
+    <!-- Instead of loading an image each time the select changes, use opacity to transition them -->
+    <div class="about-image madison" [ngStyle]="location === 'madison' && {'opacity': '1'}"></div>
+  </div>
+
+  <div class="about-info">
+    <h3 class="ion-padding-top ion-padding-start">Reportes</h3>
+
+    <p class="ion-padding-start ion-padding-end">
+      En los reportes Ud. debe responder las preguntas que se le indican.  Las preguntas de seleccion solo marque aquellas donde la respuesta es afirmativa.  
+      Las preguntas numéricas son obligatorias.  La hora y fecha serán enviadas directamente desde el telefono, al igual que la geolocalización si es posible y la información del observador. 
+    </p>
+  </div>  
+</ion-content>

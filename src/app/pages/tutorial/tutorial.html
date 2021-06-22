@@ -1,0 +1,49 @@
+<ion-header no-border>
+      <ion-toolbar color="primary">
+        <ion-title>APP ROAE</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color='warning' (click)="startApp()" [hidden]="!showSkip">Saltar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+ <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="true"> 
+    <ion-slide>
+      <img src="assets/img/logonuevo.png" class="slide-image" />
+      <h2 class="slide-title">
+        Bienvenido a
+        <b>App ROAE</b>
+      </h2>
+      <h3>
+       Red de Observación Electoral</h3> 
+       <h3> Asamblea de Educación
+       </h3>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
+      <h2 class="slide-title">¿Que es App ROAE?</h2>
+      <p>
+        <b>App ROAE</b> es una aplicación para realizar de forma rapida y simple la observación electoral tutelada 
+        por la Red de Observación de la Asamblea de Educación</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-3.png" class="slide-image" />
+      <h2 class="slide-title">¿Como uso App ROAE?</h2>
+      <p>
+        Seleccione el reporte a realizar y responda las preguntas presentadas en el reporte, marque solo las preguntas cuya respuesta sea afirmativa y una vez este completo oprima el boton de enviar</p>
+          <p>Si el boton de <b>ENVIAR</b> no se activa es porque le falta responder alguna pregunta, las preguntas indicadas con <b>*</b> son obligatorias</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <h2 class="slide-title">¿Listo para reportar?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continuar!
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>  
+</ion-content>

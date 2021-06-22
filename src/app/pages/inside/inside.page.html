@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>APP ROAE</ion-title>
+    <ion-button slot="end" color="warning" (click)="logout()">Salir</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-slide>
+      <img src="assets/img/logonuevo.png" class="slide-image" />
+      <ion-item-sliding *ngFor="let reporte of reportes$ | async" [routerLink]="['../reporte/' + reporte.num]">
+        <ion-item>
+          <ion-label class="ion-text-wrap">{{ reporte.nombre }}</ion-label>
+          <ion-label>{{ reporte.hora[0] }}{{reporte.hora[1]}}:{{ reporte.hora[2] }}{{reporte.hora[3]}}</ion-label>
+
+        </ion-item>
+      </ion-item-sliding>
+      <ion-item-sliding *ngFor="let listo of listos$ | async" [routerLink]="['../reporte/' + reporte.num]">
+        <ion-item>
+          <ion-label class="ion-text-wrap">{{ listo.cuest_id }}</ion-label>
+          <ion-label>{{ reporte.hora[0] }}{{reporte.hora[1]}}:{{ reporte.hora[2] }}{{reporte.hora[3]}}</ion-label>
+
+        </ion-item>
+      </ion-item-sliding>
+
+    </ion-slide>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/about">
+      <ion-icon name="help-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
